@@ -1,0 +1,39 @@
+- Welche URL wird aufgerufen wenn Sie versuchen sich anzumelden?
+http://localhost/baseproject/login
+
+- Welche „Method“ wird im Reiter Network angezeigt?
+Request Method: POST
+
+- Welche URL wird aufgerufen wenn Sie versuchen sich zu registrieren?
+Request URL: http://localhost/baseproject/login
+
+- Welche „Method“ wird im Reiter Network angezeigt?
+Request Method: POST
+
+- Versuchen Sie einen Nutzer mit dem Namen test zu registrieren – wie ist der Response? (Chrome Entwicklertools: Network -> klick bei Name auf login -> Response)
+{"result":false,"data":{"errorFields":{"name":"Benutzername ist schon vorhanden!"}}}
+
+- Melden Sie sich an:
+    Benutzername: test
+    Passwort: testpassword
+
+- Legen Sie eine Neue Adresse an – wie ist hier die Method? Wie lautet der Name/aufgerufene URL?
+Request URL: http://localhost/baseproject/api/address/
+Request Method: POST
+
+- Bearbeiten Sie eine Adresse und klicken Sie auf speichern – wie ist hier die Method? (evtl. Haken bei „Preserve log“ setzen) Wie lautet hier der Name/aufgerufene URL?
+http://localhost/baseproject/api/address/
+Request Method: PUT
+
+- Löschen Sie die neu angelegte Adresse – wie ist hier die Method? Wie lautet hier der Name/aufgerufene URL?
+Request URL: http://localhost/baseproject/api/address/
+Request Method: DELETE
+
+- Probieren Sie einmal eine eigene Route anzulegen. Beispielsweise, dass Sie eine zusätzliche url für den Login definieren (z.B. /anmelden) – der LoginController soll aber weiterhin verwendet werden. Dies können Sie in der Datei includes/routes.php vornehmen. Rufen Sie anschließend die URL auf. Z.B::
+$route['/anmelden'] = array('controller' => 'LoginController', 'uniqueName' => 'index');
+
+- Sehen Sie sich mal ein paar Views in dem Ordner includes/views an. Werfen Sie insbesondere einen Blick auf die Datei includes/views/parts/header.php
+
+- Versuchen Sie nachzuvollziehen wie der View die Daten erhält. 
+Offenbar wird im Controller mittels $this->view->variablenname = "wert“; ein Wert gesetzt. Auf diesen kann dann im view selbst mit $this->variablenname zugegriffen werden.
+Allerdings verstehe ich nicht ganz wozu man $this->view->title = 'Logout'; braucht (z.b.) Wird das überhaupt später noch verwendet?
